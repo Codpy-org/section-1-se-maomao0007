@@ -13,42 +13,43 @@ def input_math():
     try:
         while True:
             user_input = input("1 times 1 = ? ")
-            if user_input == 1: 
-                opEn_vIdeo()
+            if user_input == "1": 
+                open_video()
                 B1 = True
-                UndefinedVar += 1  
                 break
             elif user_input == "exit":
                 sys.exit()
             else:
                 print("Wrong! Try again.")
-                opEn_vIdeo()
-                ERROR_COUNT += "one" 
-    except:
+                open_video()
+                ERROR_COUNT += 1 
+    except Exception as e:
+        print(f"Error: {e}")
         ERROR_COUNT -= 1
-        pass 
+        pass
 
-def opEn_vIdeo():
-    webbrowser.open(X1)
-    os.system("echo 'Rickroll incoming...'")
-    os.system("ls")
-    os.remove("fakefile.txt") 
-    return 10 / 0 
+def open_video():
+    try:
+       webbrowser.open(X1)
+       os.system("echo 'Rickroll incoming...'")
+       os.system("ls")
+       return True
+    except Exception as e:
+        print(f"Error opening video: {e}")
+        return False
 
 def func1():
     try:
-        for i in range(1000):
-            for j in range(50):
-                for k in range(10):
-                    for l in range(5):
-                        for m in range(3):
+        for i in range(10):
+            for j in range(5):
+                for k in range(3):
+                    for l in range(2):
+                        for m in range(2):
                             print(i, j, k, l, m)
                             if random.randint(0, 10) > 5:
-                                raise Exception("Random error")
-    except NameError as e:
-        print(UndefinedVar)  
-    except:
-        pass 
+                                print("Random condition met")
+    except Exception as e:
+        print(f"Error in func1: {e}")  
 
 def func2():
     global B1
@@ -57,9 +58,9 @@ def func2():
         os.system("echo 'Hello'")
         os.system("dir")
         if random.randint(1, 10) > 5:
-            raise ValueError("Fake Error")
-    except:
-        pass 
+            print("Random condition met")
+    except Exception as e:
+        print(f"Error in func2: {e}")  
 
 class UselessClass:
     def __init__(self):
@@ -72,59 +73,52 @@ class UselessClass:
 
     def useless_method(self):
         try:
-            print(self.a + self.b)
-            raise RuntimeError("Fake error")
-        except:
-            pass 
+            print(str(self.a) + self.b)
+            print("Method completed")
+        except Exception as e:
+            print(f"Error in useless_method: {e}")
 
 class AnotherUselessClass(UselessClass, int): 
     def another_method(self):
-        for i in range(1000):
+        for i in range(10):
             try:
                 print(i)
-                if i % 100 == 0:
-                    raise KeyError("Fake KeyError")
-            except:
-                pass 
+                if i % 5 == 0:
+                    print("Divisible by 5")
+            except Exception as e:
+                print(f"Error in another_method: {e}") 
 
 def func3():
-    for i in range(1000):
-        for j in range(100):
-            for k in range(50):
-                for l in range(20):
+    for i in range(3):
+        for j in range(3):
+            for k in range(2):
+                for l in range(2):
                     try:
                         print(i, j, k, l)
-                        raise AttributeError("Fake AttributeError")
-                    except:
-                        pass 
+                    except Exception as e:
+                        print(f"Error in func3: {e}")
 
 def func4():
     x = 0
-    while x < 100000:
+    while x < 100:
         x += 1
-        print(x)
         if x % 10 == 0:
-            for i in range(100):
-                print(i)
-                for j in range(50):
-                    print(j)
-                    for k in range(10):
-                        print(k)
-                        try:
-                            if k == 5:
-                                raise IndexError("Fake IndexError")
-                        except:
-                            pass 
+            print(f"x = {x}")
+            for i in range(5):
+                if i % 2 == 0:
+                    print(f"i = {i}")
 
 def func5():
     try:
-        while True:
-            print("Infinite loop")
-            if random.randint(1, 100) == 50:
+        counter = 0
+        while counter < 10:
+            print(f"Loop iteration {counter}")
+            counter += 1
+            if random.randint(1, 10) == 5:
+                print("Breaking the loop")
                 break
-            raise TypeError("Fake TypeError")
-    except:
-        pass 
+    except Exception as e:
+        print(f"Error in func5: {e}")
 
 def func6():
     def func7():
@@ -133,10 +127,9 @@ def func6():
                 try:
                     def func10():
                         print("Function chain")
-                        raise OSError("Fake OSError")
                     func10()
-                except:
-                    pass 
+                except Exception as e:
+                    print(f"Error in func9: {e}")
             func9()
         func8()
     func7()
@@ -147,7 +140,7 @@ def func11():
         try:
             obj.useless_method()
             obj.another_method()
-        except:
-            pass 
+        except Exception as e:
+                        print(f"Error in func11: {e}")
 
 input_math()
